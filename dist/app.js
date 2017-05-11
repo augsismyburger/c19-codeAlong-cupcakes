@@ -7,7 +7,7 @@ let bakery = {};
 bakery.loadInventory = () => {
     return new Promise((resolve, reject) => {
         let inventoryLoader = new XMLHttpRequest();
-        inventoryLoader.open("get", 'inventory.json');
+        inventoryLoader.open("get", 'https://cakes-and-staches.firebaseio.com/ccakes.json');
         inventoryLoader.send();
         inventoryLoader.addEventListener("load", function() {
             var data = JSON.parse(this.responseText);
@@ -76,9 +76,10 @@ Handlebars.registerHelper("increment", (value) => parseInt(value) + 1);
 $("#welcome").append(welcomeTemplate(welcomeData));
 
 function populatePage(stuff) {
+    let obj = {ccakes:stuff};
     // MAKE A DIV TO HOLD REDERED HTML
     let newDiv = document.createElement('div');
-    newDiv.innerHTML = cakeTemplate(stuff);
+    newDiv.innerHTML = cakeTemplate(obj);
     $('#cake-cards').append(newDiv);
 }
 

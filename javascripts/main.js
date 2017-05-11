@@ -13,9 +13,10 @@ Handlebars.registerHelper("increment", (value) => parseInt(value) + 1);
 $("#welcome").append(welcomeTemplate(welcomeData));
 
 function populatePage(stuff) {
+    let obj = {ccakes:stuff};
     // MAKE A DIV TO HOLD REDERED HTML
     let newDiv = document.createElement('div');
-    newDiv.innerHTML = cakeTemplate(stuff);
+    newDiv.innerHTML = cakeTemplate(obj);
     $('#cake-cards').append(newDiv);
 }
 
